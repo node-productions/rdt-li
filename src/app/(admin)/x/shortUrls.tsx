@@ -21,10 +21,8 @@ import { Input } from '@/components/ui/input'
 import {
   Menubar,
   MenubarContent,
-  MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from '@/components/ui/menubar'
 import {
@@ -47,10 +45,8 @@ import {
   ArrowUp,
   BarChart,
   Copy,
-  Droplet,
   Eye,
   Loader2,
-  Pencil,
   Settings,
   Trash,
 } from 'lucide-react'
@@ -270,7 +266,7 @@ const Page = () => {
               className="flex flex-col space-y-1.5 rounded-md border bg-background p-3 text-sm"
               key={shortUrl.id}
             >
-              <div className="flex flex-col gap-1.5 font-mono text-xs">
+              <div className="flex flex-col gap-1.5 font-sans text-xs">
                 <div className="flex items-center justify-end">
                   <div className="flex items-center gap-1 px-2">
                     {shortUrl?.visits?.length ? (
@@ -346,7 +342,7 @@ const Page = () => {
                               <p className="text-foreground/80">Delete</p>
                               <Trash className="h-3 w-3 text-foreground/80" />
                             </AlertDialogTrigger>
-                            <AlertDialogContent className="w-11/12 rounded-md font-mono">
+                            <AlertDialogContent className="w-11/12 rounded-md font-sans">
                               <AlertDialogHeader>
                                 <AlertDialogTitle className="text-sm">
                                   Do you want to delete
@@ -362,7 +358,7 @@ const Page = () => {
                                   Cancel
                                 </AlertDialogCancel>
                                 <AlertDialogAction
-                                  className="bg-red-500 px-8 text-xs text-white"
+                                  className="bg-destructive px-8 text-xs text-white"
                                   onClick={() => {
                                     mutation.mutate({ id: shortUrl.id })
                                     toast.info('Deleted')

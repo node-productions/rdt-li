@@ -6,15 +6,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
@@ -33,7 +30,6 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarTrigger,
 } from '@/components/ui/menubar'
 import {
@@ -46,7 +42,7 @@ import {
 import { getBaseURL } from '@/lib/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Home, Laptop, Moon, Star, Sun } from 'lucide-react'
+import { Laptop, Moon, Sun } from 'lucide-react'
 import { signOut } from 'next-auth/react'
 import { useTheme } from 'next-themes'
 import Image from 'next/image'
@@ -114,23 +110,7 @@ export default function Page() {
   const domain: any = getBaseURL()?.split('://')[1] + '/'
 
   return (
-    <div className="container flex min-h-[100dvh] max-w-3xl flex-col p-5 font-mono">
-      <Alert className="mb-5" variant="default">
-        <AlertTitle className="text-xs font-semibold">
-          API access added!
-        </AlertTitle>
-        <AlertDescription className="text-[0.7rem]">
-          * Generate API key{' '}
-          <Link className="underline" href="/x/key">
-            here
-          </Link>
-          <br />* Docs:{' '}
-          <Link className="underline" href={`${getBaseURL()}/api/v1`}>
-            rdt.li/docs
-          </Link>
-        </AlertDescription>
-      </Alert>
-
+    <div className="container flex min-h-[100dvh] max-w-3xl flex-col p-5 font-sans">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} autoComplete="off">
           {/* 
@@ -144,17 +124,6 @@ export default function Page() {
                 <div className="mb-3 flex items-center justify-between text-sm font-semibold">
                   <p className="pt-0.5">URL to shorten</p>
                   <div className="flex items-center gap-4">
-                    <Link href="/">
-                      <Home className="h-4 w-4" />
-                    </Link>
-                    <Link
-                      href="https://rdt.li/github"
-                      target="_blank"
-                      className="flex items-center gap-1.5 rounded-md bg-blue-500 px-3 py-0.5 text-[0.6rem] text-white"
-                    >
-                      <p className="mt-0.5">Github</p>
-                      <Star className="h-3.5 w-3.5" />
-                    </Link>
                     <Menubar className="h-min rounded-full p-0">
                       <MenubarMenu>
                         <MenubarTrigger className="p-0">
@@ -217,8 +186,8 @@ export default function Page() {
                 </div>
                 <FormControl>
                   <Input
-                    className="font-mono text-xs placeholder:text-slate-400"
-                    placeholder="https://github.com/nrjdalal"
+                    className="font-sans text-xs placeholder:text-slate-400"
+                    placeholder="https://github.com/nodepro"
                     {...field}
                   />
                 </FormControl>
@@ -317,6 +286,7 @@ export default function Page() {
                               <Input
                                 className="w-[5.5rem] text-center text-xs placeholder:text-foreground/30"
                                 placeholder="Infinite"
+                                data-1p-ignore
                                 {...field}
                               />
                               <FormMessage className="h-4 text-[0.7rem]" />
@@ -342,6 +312,7 @@ export default function Page() {
                                 className="cursor-not-allowed text-center text-xs placeholder:text-foreground/30"
                                 placeholder="No Password"
                                 type="password"
+                                data-1p-ignore
                                 {...field}
                                 disabled
                               />
@@ -370,11 +341,11 @@ export default function Page() {
                             </p>
                             <Input
                               className="text-xs placeholder:text-foreground/30"
-                              placeholder="nrjdalal"
+                              placeholder="nodepro"
                               style={{
                                 paddingLeft: `${
                                   1 +
-                                  domain?.length * 0.45 +
+                                  domain?.length * 0.36 +
                                   (domain?.length - 1) * 0.01
                                 }rem`,
                               }}

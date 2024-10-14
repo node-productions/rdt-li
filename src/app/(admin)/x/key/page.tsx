@@ -30,7 +30,7 @@ const Page = () => {
   if (isPending) {
     return (
       <>
-        <div className="container my-24 flex min-h-[100dvh] max-w-xl flex-col items-center gap-y-5 p-5 font-mono">
+        <div className="container my-24 flex min-h-[100dvh] max-w-xl flex-col items-center gap-y-5 p-5 font-sans">
           <p className="font-sans font-medium">API Key</p>
           <p>Loading...</p>
         </div>
@@ -41,7 +41,7 @@ const Page = () => {
   if (isError) {
     return (
       <>
-        <div className="container my-24 flex min-h-[100dvh] max-w-xl flex-col items-center gap-y-5 p-5 font-mono">
+        <div className="container my-24 flex min-h-[100dvh] max-w-xl flex-col items-center gap-y-5 p-5 font-sans">
           <p className="font-sans font-medium">API Key</p>
           <p>Error</p>
         </div>
@@ -51,7 +51,7 @@ const Page = () => {
 
   return (
     <>
-      <div className="container my-24 flex min-h-[100dvh] max-w-xl flex-col items-center gap-y-5 p-5 font-mono">
+      <div className="container my-24 flex min-h-[100dvh] max-w-xl flex-col items-center gap-y-5 p-5 font-sans">
         <Link className="mb-12 font-sans text-sm underline" href="/x">
           Back to Dashboard
         </Link>

@@ -1,17 +1,10 @@
 'use client'
 
 import { signIn } from 'next-auth/react'
-import Link from 'next/link'
 
 const Page = () => {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center gap-5 p-5">
-      <Link
-        href={'/'}
-        className="flex h-10 w-full max-w-lg items-center justify-center rounded-md bg-slate-900 px-8 text-center text-sm text-white"
-      >
-        Home
-      </Link>
       <button
         className="flex h-10 w-full max-w-lg items-center justify-center gap-2 rounded-md border bg-background px-8 py-2 text-sm"
         onClick={() => signIn('google')}

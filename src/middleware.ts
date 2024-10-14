@@ -4,6 +4,10 @@ import { NextResponse } from 'next/server'
 
 export default withAuth(
   async function middleware(req) {
+    if (req.nextUrl.pathname === '/') {
+      return NextResponse.redirect(`${process.env.WEBSITE}`)
+    }
+
     const token = await getToken({ req })
 
     const isAuth = !!token
@@ -38,5 +42,5 @@ export default withAuth(
 )
 
 export const config = {
-  matcher: ['/access', '/x/:path*'],
+  matcher: ['/', '/access', '/x/:path*'],
 }

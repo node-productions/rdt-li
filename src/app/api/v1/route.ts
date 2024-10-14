@@ -2,7 +2,6 @@ import { db } from '@/lib/db'
 import { shortUrls, users } from '@/lib/db/schema'
 import { getBaseURL } from '@/lib/utils'
 import { eq } from 'drizzle-orm'
-import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 
 const decryptor = async (text: string) => {

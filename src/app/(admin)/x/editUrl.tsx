@@ -97,7 +97,7 @@ export default function Page({
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="w-full space-y-5 py-5 font-mono text-xs"
+              className="w-full space-y-5 py-5 font-sans text-xs"
             >
               <FormField
                 control={form.control}
@@ -114,11 +114,11 @@ export default function Page({
                         </p>
                         <Input
                           className="text-xs"
-                          placeholder="nrjdalal"
+                          placeholder="nodepro"
                           style={{
                             paddingLeft: `${
                               1 +
-                              domain?.length * 0.45 +
+                              domain?.length * 0.36 +
                               (domain?.length - 1) * 0.01
                             }rem`,
                           }}

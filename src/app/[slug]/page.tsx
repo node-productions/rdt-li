@@ -87,16 +87,6 @@ const Page = async ({ params }: { params: { slug: string } }) => {
         <br />
         {getBaseURL()?.split('://')[1]}/{slug}
       </Link>
-
-      <p className="text-sm">
-        Create short URLs at{' '}
-        <Link
-          className="animate-pulse text-sm font-bold text-orange-500 underline"
-          href="/"
-        >
-          {getBaseURL()?.split('://')[1]}
-        </Link>
-      </p>
     </div>
   )
 }

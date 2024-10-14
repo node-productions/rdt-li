@@ -1,13 +1,12 @@
-import './globals.css'
-import { fontMono, fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Toaster } from 'sonner'
+import './globals.css'
 import Provider from './provider'
 
 export const metadata: Metadata = {
-  title: 'Redirect.link',
+  title: 'ndpr.jp',
   description: 'An open source URL shortener.',
 }
 
@@ -24,13 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          'min-h-dvh bg-secondary font-sans antialiased',
-          fontMono.variable,
-          fontSans.variable,
-        )}
-      >
+      <body className={cn('min-h-dvh bg-secondary font-sans antialiased')}>
         <Provider>
           {children}
           <Toaster expand={true} richColors />
