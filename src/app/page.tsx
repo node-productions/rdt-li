@@ -1,6 +1,7 @@
 import CreateShortUrls from '@/app/createPublic'
 import { db } from '@/lib/db'
 import { shortUrls, users } from '@/lib/db/schema'
+import { getBaseURL } from '@/lib/utils'
 import { count, isNotNull, isNull } from 'drizzle-orm'
 import { Anchor, ArrowDown, ExternalLink, Star, User } from 'lucide-react'
 import Image from 'next/image'
@@ -42,7 +43,7 @@ export default async function Page() {
 
           <h1 className="font-heading max-w-md text-3xl sm:text-4xl">
             <span className="font-mono font-semibold">
-              {process.env.NEXT_PUBLIC_APP_URL?.split('://')[1]}
+              {getBaseURL()?.split('://')[1]}
             </span>{' '}
             self hostable open source URL shortener
           </h1>
@@ -50,9 +51,9 @@ export default async function Page() {
           <CreateShortUrls />
 
           <p className="max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-            {process.env.NEXT_PUBLIC_APP_URL?.split('://')[1]} self hostable,
-            feature rich, minimalistic and open source URL shortener. Built with
-            Next.js, Drizzle, NextAuth and Postgres.
+            {getBaseURL()?.split('://')[1]} self hostable, feature rich,
+            minimalistic and open source URL shortener. Built with Next.js,
+            Drizzle, NextAuth and Postgres.
           </p>
 
           <p className="text-xs">

@@ -43,6 +43,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { getBaseURL } from '@/lib/utils'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Home, Laptop, Moon, Star, Sun } from 'lucide-react'
@@ -110,7 +111,7 @@ export default function Page() {
     await mutation.mutateAsync(values)
   }
 
-  const domain: any = process.env.NEXT_PUBLIC_APP_URL?.split('://')[1] + '/'
+  const domain: any = getBaseURL()?.split('://')[1] + '/'
 
   return (
     <div className="container flex min-h-[100dvh] max-w-3xl flex-col p-5 font-mono">
@@ -124,10 +125,7 @@ export default function Page() {
             here
           </Link>
           <br />* Docs:{' '}
-          <Link
-            className="underline"
-            href={`${process.env.NEXT_PUBLIC_APP_URL}/api/v1`}
-          >
+          <Link className="underline" href={`${getBaseURL()}/api/v1`}>
             rdt.li/docs
           </Link>
         </AlertDescription>

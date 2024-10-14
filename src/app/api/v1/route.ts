@@ -1,5 +1,6 @@
 import { db } from '@/lib/db'
 import { shortUrls, users } from '@/lib/db/schema'
+import { getBaseURL } from '@/lib/utils'
 import { eq } from 'drizzle-orm'
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
@@ -54,7 +55,7 @@ const decryptor = async (text: string) => {
 // GET /api/v1 for docs
 export async function GET() {
   return NextResponse.json({
-    endpoint: `${process.env.NEXT_PUBLIC_APP_URL}/api/v1`,
+    endpoint: `${getBaseURL()}/api/v1`,
     message: 'Use POST method to access the API',
     headers: {
       authorization: 'Bearer <API Key>',

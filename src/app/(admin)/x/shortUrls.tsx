@@ -34,7 +34,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { cn, smallDate } from '@/lib/utils'
+import { cn, getBaseURL, smallDate } from '@/lib/utils'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   BarElement,
@@ -168,9 +168,7 @@ const Page = () => {
 
   // searching
   const xData = sortedData.map((item: any) => {
-    let id_html = `${process.env.NEXT_PUBLIC_APP_URL?.split('//')[1]}/${
-      item.id
-    }`.replace(
+    let id_html = `${getBaseURL()?.split('//')[1]}/${item.id}`.replace(
       new RegExp(filterBy, 'gi'),
       (match: any) => `<span class="bg-yellow-200">${match}</span>`,
     )
@@ -321,7 +319,7 @@ const Page = () => {
                       className="h-3.5 w-3.5 cursor-pointer text-slate-500"
                       onClick={() => {
                         navigator.clipboard.writeText(
-                          `${process.env.NEXT_PUBLIC_APP_URL}/${shortUrl.id}`,
+                          `${getBaseURL()}/${shortUrl.id}`,
                         )
                         toast.success('Copied to clipboard')
                       }}
@@ -353,12 +351,7 @@ const Page = () => {
                                 <AlertDialogTitle className="text-sm">
                                   Do you want to delete
                                   <br />
-                                  {
-                                    process.env.NEXT_PUBLIC_APP_URL?.split(
-                                      '//',
-                                    )[1]
-                                  }
-                                  /{shortUrl.id}?
+                                  {getBaseURL()?.split('//')[1]}/{shortUrl.id}?
                                 </AlertDialogTitle>
                                 <AlertDialogDescription className="line-clamp-2 break-all text-xs">
                                   URL: {shortUrl.url}

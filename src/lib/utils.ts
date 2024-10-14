@@ -21,3 +21,9 @@ export const smallDate = (date: any) => {
 export function sanitize(text: string) {
   return slugify(text, { decamelize: false, lowercase: false, separator: '-' })
 }
+
+export const getBaseURL = () => {
+  const url = process.env.VERCEL_PROJECT_PRODUCTION_URL
+
+  return url ? `https://${url}` : `http://localhost:${process.env.PORT || 3000}`
+}

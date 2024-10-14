@@ -1,5 +1,6 @@
-import Link from 'next/link'
+import { getBaseURL } from '@/lib/utils'
 import { headers } from 'next/headers'
+import Link from 'next/link'
 import { permanentRedirect } from 'next/navigation'
 import retry from 'p-retry'
 
@@ -19,7 +20,7 @@ async function getData(slug: string) {
           title: 'Umami',
           url: `/${slug}`,
           website: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
-          name: `${process.env.NEXT_PUBLIC_APP_URL}/${slug}`,
+          name: `${getBaseURL()}/${slug}`,
         },
         type: 'event',
       }
@@ -40,16 +41,13 @@ async function getData(slug: string) {
   try {
     const res = await retry(
       async () => {
-        const pRes = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL}/api/redirect`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ slug }),
+        const pRes = await fetch(`${getBaseURL()}/api/redirect`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
-        )
+          body: JSON.stringify({ slug }),
+        })
 
         if (pRes.status !== 200) {
           throw new Error('Failed to fetch')
@@ -87,7 +85,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
       >
         {data.message}
         <br />
-        {process.env.NEXT_PUBLIC_APP_URL?.split('://')[1]}/{slug}
+        {getBaseURL()?.split('://')[1]}/{slug}
       </Link>
 
       <p className="text-sm">
@@ -96,7 +94,7 @@ const Page = async ({ params }: { params: { slug: string } }) => {
           className="animate-pulse text-sm font-bold text-orange-500 underline"
           href="/"
         >
-          {process.env.NEXT_PUBLIC_APP_URL?.split('://')[1]}
+          {getBaseURL()?.split('://')[1]}
         </Link>
       </p>
     </div>
