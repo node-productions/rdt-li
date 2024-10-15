@@ -24,7 +24,7 @@ export function sanitize(text: string) {
 
 export const getBaseURL = () => {
   const isDev = process.env.NODE_ENV === 'development'
-  const url = isDev && process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
+  const url = !isDev && process.env.NEXT_PUBLIC_VERCEL_PROJECT_PRODUCTION_URL
 
   return url ? `https://${url}` : `http://localhost:${process.env.PORT || 3000}`
 }
