@@ -370,6 +370,9 @@ export default function Page() {
 
       <ShowUrl />
 
+      {process.env.VERCEL_PROJECT_PRODUCTION_URL || 'null'}
+      {process.env.VERCEL_URL || 'null'}
+
       <div className="mt-8 flex w-full justify-center">
         <Link href="https://vercel.com" target="_blank">
           <Image
