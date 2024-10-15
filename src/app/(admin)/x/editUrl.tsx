@@ -118,7 +118,7 @@ export default function Page({
                           style={{
                             paddingLeft: `${
                               1 +
-                              domain?.length * 0.36 +
+                              domain?.length * 0.45 +
                               (domain?.length - 1) * 0.01
                             }rem`,
                           }}
