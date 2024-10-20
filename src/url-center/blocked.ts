@@ -5,4 +5,6 @@ export const blocked = [
   'verifier-captchabot.site',
   'verify.alt-dentifier.xyz',
   'verifycaptcha-bot.com',
+  'temu.com',
+  'tiktok.com',
 ]

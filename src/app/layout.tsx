@@ -31,14 +31,15 @@ export default function RootLayout({
       </body>
 
       {/* optional: umami analytics */}
-      {process.env.NEXT_PUBLIC_UMAMI_URL && (
-        <Script
-          async
-          defer
-          src={`${process.env.NEXT_PUBLIC_UMAMI_URL}/script.js`}
-          data-website-id={`${process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}`}
-        />
-      )}
+      {process.env.NEXT_PUBLIC_UMAMI_DOMAIN &&
+        process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+          <Script
+            async
+            defer
+            src={`https://${process.env.NEXT_PUBLIC_UMAMI_DOMAIN}/script.js`}
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          />
+        )}
     </html>
   )
 }
